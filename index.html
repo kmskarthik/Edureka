@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS Dynamic table</title>
+	<!--<link rel="stylesheet" href="css/mystyle.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/app.employee.js"></script>
+
+</head>
+<body ng-controller="EmployeeCtrl as vm">
+	<div>
+	<form name="vm.addEmployeeForm" novalidate class="form-horizontal">
+	<div class="form-group">
+		<input ng-model="vm.emp.name" name="name" required placeholder="Enter Name">
+		<span style="color:red" ng-show="vm.addEmployeeForm.name.$invalid">
+			<span ng-show="vm.addEmployeeForm.name.$error.required && vm.isFormSubmit">Employee Name is required.</span>
+		</span>
+	</div>
+	<div class="form-group">
+		<input type="number" ng-model="vm.emp.age" name="age" required placeholder="Enter Age">
+		<span style="color:red" ng-show="vm.addEmployeeForm.age.$invalid">
+			<span ng-show="vm.addEmployeeForm.age.$error.required && vm.isFormSubmit">Employee Age is required.</span>
+		</span>
+	</div>
+	<div class="form-group">
+		<input type="text" ng-model="vm.emp.designation" name="designation" required placeholder="Enter Designation">
+		<span style="color:red" ng-show="vm.addEmployeeForm.designation.$invalid">
+			<span ng-show="vm.addEmployeeForm.designation.$error.required && vm.isFormSubmit">Employee Designation is required.</span>
+		</span>
+	</div>
+	<div class="form-group">
+		<input type="number" ng-model="vm.emp.salary" name="salary" required placeholder="Enter Salary">
+		<span style="color:red" ng-show="vm.addEmployeeForm.salary.$invalid">
+			<span ng-show="vm.addEmployeeForm.salary.$error.required && vm.isFormSubmit">Employee Salary is required.</span>
+		</span>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-sm" ng-click="vm.add()">Submit</button>
+	</div>
+</form>
+<hr/>
+
+		<table class="table table-bordered">
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Designation</th>
+				<th>Salary</th>
+			</tr>
+			<tr ng-repeat="emp in vm.employees">
+				<td>{{emp.name}}</td>
+				<td>{{emp.age}}</td>
+				<td>{{emp.designation}}</td>
+				<td>{{emp.salary}}</td>
+			</tr>
+		</table>
+<hr/>
+	
+
+		<h3>
+			To Assign value to Form
+		</h3>
+
+
+		<form name="assignForm" novalidate class="form-horizontal">
+			<div class="form-group">
+				<button type="button" class="btn btn-primary btn-sm"
+					ng-click="vm.assign()">Assign</button>
+				<button type="button" class="btn btn-primary btn-sm"
+					ng-click="vm.clear()">Clear</button>
+			</div>
+			<div class="form-group">
+				<input ng-model="vm.newEmp.name" name="name" required
+					placeholder="Name">
+			</div>
+			<div class="form-group">
+				<input type="number" ng-model="vm.newEmp.age" name="age" required
+					placeholder="Age">
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="text" ng-model="vm.newEmp.designation" name="designation"
+					required placeholder="Designation"> 
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="number" ng-model="vm.newEmp.salary" name="salary" required
+					placeholder="Salary"> 
+				</span>
+			</div>
+		</form>
+
+	</div>
+
+	
+</body>
+</html>
